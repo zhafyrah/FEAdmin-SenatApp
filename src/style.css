@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback");
+@import "/assets//plugins/fontawesome-free/css/all.min.css";
+@import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+@import "/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css";
+@import"/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css";
+@import "/assets/plugins/jqvmap/jqvmap.min.css";
+@import "/assets/css/adminlte.min.css";
+@import "/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css";
+@import "/assets/plugins/daterangepicker/daterangepicker.css";
+@import "/assets/plugins/summernote/summernote-bs4.min.css";
+@import "/assets/plugins/codemirror/codemirror.css";
+@import "/assets/plugins/codemirror/theme/monokai.css";
+@import "/assets/plugins/daterangepicker/daterangepicker.css";
+/* @import "../src/assets/css/bootstrap/css/bootstrap.min.css"; */
+
+
+/* Style Loading Circle */
+.loading-section {
+    position: absolute;
+    transition: all 0.5s ease-in;
+    transition-duration: 2s;
+    z-index: 99;
+    width: 80%;
+    height: 80%;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(1.5 spx);
+    background-color: rgba(244, 244, 244, 0.15);
+    overflow: hidden;
+    margin: auto;
+}
+
+.custom-loading-circle {
+    display: inline-block;
+    width:60px;
+    height: 60px;
+}
+
+.custom-loading-circle:after {
+    content: " ";
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: var(--primary) transparent var(--primary) transparent;
+    animation: custom-loading-circle 1.2s linear infinite;
+}
+
+@keyframes custom-loading-circle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
