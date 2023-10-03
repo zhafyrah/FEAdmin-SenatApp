@@ -118,6 +118,7 @@ function onClickSubmit(e) {
                 type="file"
                 class="custom-file-input"
                 id="exampleInputFile"
+                accept=".jpg, .jpeg"
                 @change="onChangeFoto"
               />
               <label class="custom-file-label" for="exampleInputFile">

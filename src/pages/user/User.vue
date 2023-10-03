@@ -87,6 +87,20 @@ watch(
   }
 );
 
+function getRole(roleId) {
+  if (roleId === 1) {
+    return "admin";
+  } else if (roleId === 2) {
+    return "ketua";
+  } else if (roleId === 3) {
+    return "anggota";
+  } else if (roleId === 4) {
+    return "komisi";
+  } else {
+    return "Tidak ditemukan"; // Ini opsional, Anda dapat menggantinya dengan pesan sesuai kebutuhan.
+  }
+}
+
 function onCLickNext() {
   if (userStore.page < userStore.totalPage) {
     userStore.page++;
@@ -201,7 +215,7 @@ function onChangeStatus(e) {
                 {{ user.nip }}
               </td>
               <td>{{ user.email }}</td>
-              <td>{{ ucwords(user.role) }}</td>
+              <td>{{ getRole(user.user_role.roles_id) }}</td>
               <td class="text-center">
                 <div class="form-group">
                   <div class="custom-control custom-switch">

@@ -5,7 +5,8 @@ import snakecaseKeys from "snakecase-keys";
 
 const Api = {
     init() {
-        axios.defaults.baseURL = "https://api.zhanah-polindra.xyz/api/";
+        // axios.defaults.baseURL = "https://api.zhanah-polindra.xyz/api/";
+        axios.defaults.baseURL = "http://localhost:8000/api";
         axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
         axios.defaults.headers.common.Authorization =
             "Bearer " + Cookies.get("token");

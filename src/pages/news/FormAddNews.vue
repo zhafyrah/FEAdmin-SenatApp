@@ -125,17 +125,14 @@ function onSubmit(e) {
             placeholder="Isi berita"
             required
           ></textarea>
-          <div
-            v-if="beritaStore.beritaSingleData.foto_name === ''"
-            class="form-group"
-          >
+          <div class="form-group">
             <label for="inputPhoto">Foto</label>
             <div class="input-group">
               <div class="custom-file">
                 <input
                   type="file"
                   class="custom-file-input"
-                  accept="image/*"
+                  accept=".jpg, .jpeg"
                   @change="onChangeFoto"
                   required
                 />
@@ -147,19 +144,6 @@ function onSubmit(e) {
                   }}
                 </label>
               </div>
-            </div>
-          </div>
-          <div v-else class="row text-center">
-            <div class="col-md-12 mt-4">
-              <img
-                :src="beritaStore.beritaSingleData.foto_path"
-                :alt="beritaStore.beritaSingleData.foto_name"
-                width="150"
-                height="150"
-              />
-            </div>
-            <div class="col-md-12">
-              <label>{{ beritaStore.beritaSingleData.foto_name }} </label>
             </div>
           </div>
         </div>

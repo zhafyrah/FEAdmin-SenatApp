@@ -65,7 +65,7 @@ function onClickSubmit(e) {
     sejarahSenatStore.updateSejarahSenat(
       route.params.id,
       sejarahSenatForm.value,
-      null
+      fotoFile.value
     );
   } else {
     sejarahSenatStore.saveSejarahSenat(sejarahSenatForm.value, fotoFile.value);
@@ -111,7 +111,7 @@ onMounted(() => {
             ></textarea>
           </div>
         </div>
-        <div v-if="sejarahSenatForm.fotoUrl == ''" class="form-group">
+        <div class="form-group">
           <label for="exampleInputFile">Foto</label>
           <div class="input-group">
             <div class="custom-file">
@@ -119,6 +119,7 @@ onMounted(() => {
                 type="file"
                 class="custom-file-input"
                 id="exampleInputFile"
+                accept=".jpg, .jpeg"
                 @change="onChangeFoto"
               />
               <label class="custom-file-label" for="exampleInputFile">
@@ -129,14 +130,6 @@ onMounted(() => {
                 }}
               </label>
             </div>
-          </div>
-        </div>
-        <div v-else class="row text-center">
-          <div class="col-md-12">
-            <img :src="sejarahSenatForm.fotoUrl" width="150" height="150" />
-          </div>
-          <div class="col-md-12">
-            <label>{{ sejarahSenatForm.fotoName }}</label>
           </div>
         </div>
       </div>

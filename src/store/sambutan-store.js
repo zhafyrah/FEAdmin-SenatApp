@@ -142,10 +142,11 @@ export const useSambutanStore = defineStore("sambutan", {
         getSambutanById(id) {
             this.errorMessage = ""
             this.singleData = {}
+            this.isLoading = true
             getById(id)
                 .then((response) => {
                     this.singleData = response.data
-                    this.isLoading = true
+                    this.isLoading = false
                 })
                 .catch((error) => {
                     if (error.response) {

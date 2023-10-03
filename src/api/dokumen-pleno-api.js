@@ -20,7 +20,7 @@ export function insertDokPlenoRequest(data) {
 }
 
 export function updateDokPlenoRequest(dokId, data) {
-    return resource.update(dokId, data, 'update', true)
+    return resource.updateFormData(dokId, data, 'update', true)
 }
 
 export function deleteDokPlenoRequest(dokId) {

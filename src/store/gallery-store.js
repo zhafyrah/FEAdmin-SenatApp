@@ -77,7 +77,7 @@ export const useGalleryStore = defineStore("gallery", {
             insertGalleryRequest(resultGalleryForm(galleryForm, fotoFile))
                 .then((response) => {
                     this.isSuccessSubmit = true
-                    this.submitMessage = "Data Gallery Berhasil di Simpan"
+                    this.submitMessage = "Data galeri berhasil disimpan"
                     this.isLoading = false
                 }).catch((error) => {
                     if (error.response) {
@@ -95,11 +95,10 @@ export const useGalleryStore = defineStore("gallery", {
             this.errorMessage = ""
             this.submitMessage = ""
             this.isLoading = true
-
             updateGalleryRequest(id, resultGalleryForm(galleryForm, fotoFile))
                 .then((response) => {
                     this.isSuccessSubmit = true
-                    this.submitMessage = "Data Gallery Berhasil di Update"
+                    this.submitMessage = "Data galeri berhasil diperbarui"
                     this.isLoading = false
                 })
                 .catch((error) => {
@@ -120,7 +119,7 @@ export const useGalleryStore = defineStore("gallery", {
             deleteGalleryRequest(id)
                 .then((response) => {
                     this.isSuccessSubmit = true
-                    this.submitMessage = "Data Gallery Berhasil di Hapus"
+                    this.submitMessage = "Data galeri berhasil dihapus"
                 })
                 .catch((error) => {
                     if (error.response) {
@@ -135,10 +134,11 @@ export const useGalleryStore = defineStore("gallery", {
         getGalleryById(id) {
             this.errorMessage = ""
             this.singleData = {}
+
             getById(id)
                 .then((response) => {
                     this.singleData = response.data
-                    this.isLoading = true
+
                 })
                 .catch((error) => {
                     if (error.response) {

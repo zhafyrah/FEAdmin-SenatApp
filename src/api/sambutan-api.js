@@ -19,7 +19,7 @@ export function insertSambutanRequest(data) {
 }
 
 export function updateSambutanRequest(sambutanId, data) {
-    return resource.update(sambutanId, data, 'update', true)
+    return resource.updateFormData(sambutanId, data, 'update', true)
 }
 
 export function deleteSambutanRequest(sambutanId) {

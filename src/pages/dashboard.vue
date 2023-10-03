@@ -48,7 +48,8 @@ const options = computed(() => ({
 }));
 
 const getDataDashboard = () => {
-  axios.defaults.baseURL = "https://api.zhanah-polindra.xyz/api/";
+  //   axios.defaults.baseURL = "https://api.zhanah-polindra.xyz/api/";
+  axios.defaults.baseURL = "http://localhost:8000/api/";
   axios
     .get("dashboard")
     .then((result) => {

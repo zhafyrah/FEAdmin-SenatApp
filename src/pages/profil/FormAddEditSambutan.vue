@@ -65,7 +65,11 @@ function onChangeFoto(e) {
 function onClickSubmit(e) {
   e.preventDefault();
   if (route.params.id) {
-    sambutanStore.updateSambutan(route.params.id, sambutanForm.value, null);
+    sambutanStore.updateSambutan(
+      route.params.id,
+      sambutanForm.value,
+      fotoFile.value
+    );
   } else {
     sambutanStore.saveSambutan(sambutanForm.value, fotoFile.value);
   }
@@ -123,7 +127,7 @@ onMounted(() => {
             </textarea>
           </div>
         </div>
-        <div v-if="sambutanForm.fotoUrl == ''" class="form-group">
+        <div class="form-group">
           <label for="exampleInputFile">Foto</label>
           <div class="input-group">
             <div class="custom-file">
@@ -131,6 +135,7 @@ onMounted(() => {
                 type="file"
                 class="custom-file-input"
                 id="exampleInputFile"
+                accept=".jpg, .jpeg"
                 @change="onChangeFoto"
               />
               <label class="custom-file-label" for="exampleInputFile">
@@ -141,14 +146,6 @@ onMounted(() => {
                 }}
               </label>
             </div>
-          </div>
-        </div>
-        <div v-else class="row text-center">
-          <div class="col-md-12">
-            <img :src="sambutanForm.fotoUrl" width="150" height="150" />
-          </div>
-          <div class="col-md-12">
-            <label>{{ sambutanForm.fotoName }}</label>
           </div>
         </div>
       </div>

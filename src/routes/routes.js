@@ -243,18 +243,6 @@ const routes = [
         component: () => import("../pages/news/FormAddNews.vue"),
     },
     {
-        path: "/detail-berita/:id",
-        name: "DetailBerita",
-        meta: {
-            layout: 'Authenticated',
-            breadcrumb: [{
-                label: 'Berita',
-                path: '/berita',
-            }]
-        },
-        component: () => import("../pages/news/DetailNews.vue"),
-    },
-    {
         path: "/sambutan",
         name: "Sambutan Ketua Senat",
         meta: {
@@ -349,7 +337,15 @@ const routes = [
         component: () => import("../pages/gallery/FormAddGallery.vue"),
     },
     {
-        //not-found paeg
+        path: "/edit-foto/:id?",
+        name: "Edit Foto",
+        meta: {
+            layout: 'Authenticated',
+            permission: ['edit foto']
+        },
+        component: () => import("../pages/gallery/FormAddGallery.vue"),
+    },
+    {
         path: "/:pathMatch(.*)*",
         name: "NotFound",
         meta: {

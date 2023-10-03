@@ -87,7 +87,7 @@ function onSubmit(e) {
   if (dokId.value == 0) {
     dokStore.saveDokPleno(dokForm.value, dokFile.value);
   } else {
-    dokStore.updateDokPleno(dokId.value, dokForm.value, null);
+    dokStore.updateDokPleno(dokId.value, dokForm.value, dokFile.value);
   }
 }
 
@@ -127,6 +127,7 @@ onMounted(() => {
                 id="nosurat"
                 class="form-control"
                 v-model="dokForm.noSurat"
+                placeholder="Isi Nomor Dokumen Pleno"
                 required
               />
             </div>
@@ -139,6 +140,7 @@ onMounted(() => {
                 id="keterangan"
                 class="form-control"
                 v-model="dokForm.keterangan"
+                placeholder="Isi Keterangan Dokumen Pleno"
                 required
               />
             </div>
@@ -156,7 +158,7 @@ onMounted(() => {
           <div class="col-md-12">
             <div v-if="onlyAdminAndKetua" class="form-group">
               <label>Status</label>
-              <select class="form-control" v-model="dokForm.status" required>
+              <select class="form-control" v-model="dokForm.status">
                 <option selected disabled value="">
                   Silahkan Pilih Status
                 </option>
@@ -167,7 +169,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div v-if="dokUrl == ''" class="form-group">
+        <div class="form-group">
           <label for="exampleInputFile">Unggah Dokumen</label>
           <div class="input-group">
             <div class="custom-file">
@@ -175,6 +177,7 @@ onMounted(() => {
                 type="file"
                 class="custom-file-input"
                 id="exampleInputFile"
+                accept=".pdf"
                 @change="onChangeDok"
               />
               <label class="custom-file-label" for="exampleInputFile">
@@ -185,12 +188,6 @@ onMounted(() => {
                 }}
               </label>
             </div>
-          </div>
-        </div>
-        <div v-else class="row text-left">
-          <div class="col-md-12">
-            <!-- <img :src="dokUrl" width="150" height="150" /> -->
-            <h5>Dokumen yang diunggah: {{ dokName }}</h5>
           </div>
         </div>
       </div>

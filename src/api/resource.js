@@ -35,6 +35,27 @@ class Resource {
         });
     }
 
+    updateFormData(id = 0, data = {}, path = "", isUpload = false) {
+        const finalPath = path ? "/" + path : "";
+        const finalId = id > 0 ? finalPath + "/" + id : "";
+        const finalUrl = this.uri ? this.uri + finalId : "";
+        const headers = isUpload ?
+            {
+                "Content-Type": "multipart/form-data",
+            } :
+            {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/json",
+            };
+
+        return request({
+            url: finalUrl,
+            method: "post",
+            data: data,
+            headers: headers,
+        });
+    }
+
     update(id = 0, data = {}, path = '', isUpload = false) {
         const finalPath = path ? '/' + path : ''
         const finalId = id > 0 ? finalPath + '/' + id : ''

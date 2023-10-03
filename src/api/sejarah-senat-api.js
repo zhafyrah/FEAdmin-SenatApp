@@ -19,7 +19,7 @@ export function insertSejarahSenatRequest(data) {
 }
 
 export function updateSejarahSenatRequest(sejarahSenatId, data) {
-    return resource.update(sejarahSenatId, data, 'update', true)
+    return resource.updateFormData(sejarahSenatId, data, 'update', true)
 }
 
 export function deleteSejarahSenatRequest(sejarahSenatId) {

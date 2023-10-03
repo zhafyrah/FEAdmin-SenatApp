@@ -25,8 +25,6 @@ function showLoading() {
 }
 
 function resultBeritaForm(beritaForm, fotoFile) {
-    console.log("Result Berita Form")
-    console.log(fotoFile);
     const formData = new FormData()
     formData.append('judul', beritaForm.judul)
     formData.append('tanggal_unggah', formatDateToServer(beritaForm.tanggal_unggah))
@@ -143,11 +141,11 @@ export const useBeritaStore = defineStore("berita", {
                 })
         },
         getBeritaById(id) {
+            this.isLoading = true
             getById(id)
                 .then((response) => {
                     this.beritaSingleData = response.data
-                    this.isLoading = true
-                    console.log(this.beritaSingleData)
+                    this.isLoading = false
                 })
                 .catch((error) => {
                     if (error.response) {

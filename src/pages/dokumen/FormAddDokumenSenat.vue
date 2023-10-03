@@ -71,7 +71,7 @@ function onSubmit(e) {
   if (dokId.value == 0) {
     dokStore.saveDokSenat(dokForm.value, dokFile.value);
   } else {
-    dokStore.updateDokSemat(dokId.value, dokForm.value, null);
+    dokStore.updateDokSenat(dokId.value, dokForm.value, dokFile.value);
   }
 }
 
@@ -139,7 +139,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div v-if="dokUrl == ''" class="form-group">
+        <div class="form-group">
           <label for="exampleInputFile">Foto</label>
           <div class="input-group">
             <div class="custom-file">
@@ -147,22 +147,17 @@ onMounted(() => {
                 type="file"
                 class="custom-file-input"
                 id="exampleInputFile"
+                accept=".jpg, .jpeg"
                 @change="onChangeDok"
               />
               <label class="custom-file-label" for="exampleInputFile">
                 {{
                   dokFile == null
-                    ? "Temukan Dokumen dari Komputer Anda"
+                    ? "Temukan Foto dari Komputer Anda"
                     : dokFile.name
                 }}
               </label>
             </div>
-          </div>
-        </div>
-        <div v-else class="row text-left">
-          <div class="col-md-12">
-            <!-- <img :src="dokUrl" width="150" height="150" /> -->
-            <h5>Dokumen yang diunggah: {{ dokName }}</h5>
           </div>
         </div>
       </div>

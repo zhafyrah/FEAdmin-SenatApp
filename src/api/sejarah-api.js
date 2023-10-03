@@ -19,7 +19,7 @@ export function insertSejarahRequest(data) {
 }
 
 export function updateSejarahRequest(sejarahId, data) {
-    return resource.update(sejarahId, data, 'update', true)
+    return resource.updateFormData(sejarahId, data, 'update', true)
 }
 
 export function deleteSejarahRequest(sejarahId) {

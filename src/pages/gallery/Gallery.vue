@@ -168,7 +168,7 @@ function confirmDelete(e) {
           <tbody class="position-relative">
             <LoadingComponent v-if="galleryStore.isLoading" />
             <tr v-if="galleryData.length == 0" class="text-center border">
-              <td colspan="5">Data Gallery Kosong</td>
+              <td colspan="5">Data Galeri Kosong</td>
             </tr>
             <tr v-for="(gallery, i) in galleryData" :key="i">
               <td class="text-center">{{ (i += lastNumberPage) }}</td>
@@ -185,6 +185,11 @@ function confirmDelete(e) {
                 <a href="#" @click.prevent="confirmDelete">
                   <i :id="gallery.id" class="fas fa-trash"></i>
                 </a>
+                <!-- <router-link
+                  :to="{ name: 'Edit Foto', params: { id: gallery.id } }"
+                >
+                  <i class="fas fa-pen ml-3"></i>
+                </router-link> -->
               </td>
             </tr>
           </tbody>

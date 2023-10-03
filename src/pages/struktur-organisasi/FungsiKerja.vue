@@ -179,7 +179,7 @@ const anggota = (anggota1, anggota2, anggota3) => {
           <tbody class="position-relative">
             <LoadingComponent v-if="fungsiKerjaStore.isLoading" />
             <tr v-if="fungsiKerjaData.length == 0" class="text-center border">
-              <td colspan="6">Data FungsiKerja Kosong</td>
+              <td colspan="6">Data Fungsi Kerja Kosong</td>
             </tr>
             <tr v-for="(fungsiKerja, i) in fungsiKerjaData" :key="i">
               <td class="text-left">{{ (i += lastNumberPage) }}</td>

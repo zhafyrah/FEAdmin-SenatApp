@@ -33,8 +33,6 @@ function resultDokKomisiForm(dokKomisiForm, dokumenFile) {
     if (dokumenFile) {
         formData.append('dokumen', dokumenFile)
     }
-
-
     return formData
 }
 
@@ -127,10 +125,11 @@ export const useDokKomisiStore = defineStore("dokumen-komisi", {
                 })
         },
         getDokKomisiById(id) {
+            this.isLoading = true
             getById(id)
                 .then((response) => {
                     this.singleData = response.data
-                    this.isLoading = true
+                    this.isLoading = false
                 })
                 .catch((error) => {
                     if (error.response) {

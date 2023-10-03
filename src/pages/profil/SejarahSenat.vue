@@ -13,10 +13,13 @@ const snackbar = useSnackbar();
 const sejarahSenatData = computed(() => {
   return sejarahSenatStore.sejarahSenatData;
 });
+
 let sejarahSenatDetail = ref({});
+
 function setDetail(text) {
   sejarahSenatDetail.value = text;
 }
+
 const page = computed(() => {
   return sejarahSenatStore.page;
 });
@@ -214,7 +217,6 @@ function confirmDelete(e) {
           </button>
         </div>
         <div class="modal-body">{{ sejarahSenatDetail }}</div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Tutup

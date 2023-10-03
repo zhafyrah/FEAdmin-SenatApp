@@ -75,6 +75,11 @@ function onCLickNext() {
   }
 }
 
+let beritaDetail = ref({});
+function setDetail(text) {
+  beritaDetail.value = text;
+}
+
 function onClickPrev() {
   if (beritaStore.page > 0) {
     beritaStore.page--;
@@ -166,7 +171,7 @@ function confirmDelete(e) {
                 {{ berita.judul }}
               </td>
               <td>
-                {{ berita.isi ? berita.isi.substring(0, 30) + " ..." : "" }}
+                {{ berita.isi ? berita.isi.substring(0, 20) + " ..." : "" }}
               </td>
               <td>
                 <center>
@@ -187,9 +192,13 @@ function confirmDelete(e) {
                 >
                   <i class="fas fa-pen ml-3"></i>
                 </router-link>
-                <!-- <router-link to="/detail-berita">
+                <a
+                  data-toggle="modal"
+                  data-target="#modalDetailBerita"
+                  @click="setDetail(berita.isi)"
+                >
                   <i class="fas fa-eye ml-3"></i>
-                </router-link> -->
+                </a>
               </td>
             </tr>
           </tbody>
@@ -202,6 +211,40 @@ function confirmDelete(e) {
         @click-next="onCLickNext"
         @click-paginate="onClickPaginate"
       />
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade bd-example-modal-lg"
+    id="modalDetailBerita"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Detail Isi Berita
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">{{ beritaDetail }}</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Tutup
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>

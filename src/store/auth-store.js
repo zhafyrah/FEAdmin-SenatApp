@@ -21,11 +21,7 @@ export const useAuthStore = defineStore('auth', {
             //reset state
             this.isError = false
             this.responseMessage = ""
-
-            loadingOverlay.show({
-                color: "#0069d9",
-                blur: "5px"
-            })
+            this.isLoading = true
 
             loginRequest(email, password)
                 .then((response) => {

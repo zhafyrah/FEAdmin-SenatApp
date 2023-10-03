@@ -20,7 +20,7 @@ export function insertKeanggotaanRequest(data) {
 }
 
 export function updateKeanggotaanRequest(keanggotaanId, data) {
-    return resource.update(keanggotaanId, data, 'update', true)
+    return resource.updateFormData(keanggotaanId, data, 'update', true)
 }
 
 export function deleteKeanggotaanRequest(keanggotaanId) {

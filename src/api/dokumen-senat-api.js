@@ -20,7 +20,7 @@ export function insertDokSenatRequest(data) {
 }
 
 export function updateDokSenatRequest(beritaId, data) {
-    return resource.update(beritaId, data, 'update', true)
+    return resource.updateFormData(beritaId, data, 'update', true)
 }
 
 export function deleteDokSenatRequest(beritaId) {

@@ -2,12 +2,20 @@
 import { useGalleryStore } from "../../store/gallery-store";
 import { useSnackbar } from "vue3-snackbar";
 import { onMounted, ref, watch, computed } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import LoadingComponent from "../../components/LoadingComponent.vue";
 
 const galleryStore = useGalleryStore();
 const snackbar = useSnackbar();
 const router = useRouter();
+const route = useRoute();
+const isEdit = computed(() => route.params.id !== null);
+
+const fotoFile = ref(null);
+const fotoId = ref(0);
+const galleryForm = ref({
+  keterangan: "",
+});
 
 watch(
   () => galleryStore.errorMessage,
@@ -27,18 +35,12 @@ watch(
     if (galleryStore.isSuccessSubmit) {
       snackbar.add({
         type: "success",
-        text: "Foto Berhasil Disimpan",
+        text: "Foto berhasil disimpan",
       });
       router.back();
     }
   }
 );
-
-const galleryForm = ref({
-  keterangan: "",
-});
-
-const fotoFile = ref(null);
 
 function onChangeFoto(e) {
   fotoFile.value = e.target.files[0];
@@ -48,11 +50,17 @@ function onClickSubmit(e) {
   e.preventDefault();
   galleryStore.saveGallery(galleryForm.value, fotoFile.value);
 }
+
+onMounted(() => {
+  if (route.params.id) {
+    galleryStore.getGalleryById(route.params.id);
+  }
+});
 </script>
 <template>
   <div class="card">
     <div class="card-header">
-      <h4 class="card-title">Silahkan Tambahkan Foto</h4>
+      Silahkan {{ isEdit ? "Perbarui" : "Tambah" }} Foto
     </div>
     <form @submit.prevent="onClickSubmit">
       <div class="card-body position-relative">
@@ -76,6 +84,7 @@ function onClickSubmit(e) {
                 type="file"
                 class="custom-file-input"
                 id="exampleInputFile"
+                accept=".jpg, .jpeg"
                 @change="onChangeFoto"
               />
               <label class="custom-file-label" for="exampleInputFile">{{

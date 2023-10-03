@@ -20,7 +20,7 @@ export function insertFungsiKerjaRequest(data) {
 }
 
 export function updateFungsiKerjaRequest(fungsiKerjaId, data) {
-    return resource.update(fungsiKerjaId, data, 'update', true)
+    return resource.updateFormData(fungsiKerjaId, data, 'update', true)
 }
 
 export function deleteFungsiKerjaRequest(fungsiKerjaId) {

@@ -92,7 +92,7 @@ export const useDokSenatStore = defineStore("dokumen-senat", {
                     this.isLoading = false
                 })
         },
-        updateDokSemat(id, dokSenatForm, fotoFile) {
+        updateDokSenat(id, dokSenatForm, fotoFile) {
             this.isLoading = true
             updateDokSenatRequest(id, resultDokSenatForm(dokSenatForm, fotoFile))
                 .then((response) => {
@@ -127,10 +127,11 @@ export const useDokSenatStore = defineStore("dokumen-senat", {
                 })
         },
         getDokSenatById(id) {
+            this.isLoading = true
             getById(id)
                 .then((response) => {
                     this.singleData = response.data
-                    this.isLoading = true
+                    this.isLoading = false
                 })
                 .catch((error) => {
                     if (error.response) {

@@ -20,7 +20,7 @@ export function insertUserRequest(data) {
 }
 
 export function updateUserRequest(userId, data) {
-    return resource.update(userId, data, 'update')
+    return resource.updateFormData(userId, data, 'update')
 }
 
 export function deleteUserRequest(userId) {

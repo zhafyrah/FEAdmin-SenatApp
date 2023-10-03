@@ -2,12 +2,11 @@
 import { useDokKomisiStore } from "../../store/dokumen-komisi-store";
 import { useSnackbar } from "vue3-snackbar";
 import { onMounted, ref, watch, computed } from "vue";
-import Datepicker from "vue3-datepicker";
 import { useRouter, useRoute } from "vue-router";
 import { storeToRefs } from "pinia";
 import { urlToFile } from "../../utils/form-utils";
 import request from "../../api/request";
-<LoadingComponent v-if="dokStore.isLoading" />;
+import LoadingComponent from "../../components/LoadingComponent.vue";
 
 const dokStore = useDokKomisiStore();
 const snackbar = useSnackbar();
@@ -17,14 +16,13 @@ const isEdit = computed(() => route.params.id !== null);
 const dokUrl = ref("");
 const dokName = ref("");
 const dokId = ref(0);
+const dokFile = ref(null);
 
 const dokForm = ref({
   noSurat: "",
   tanggal_unggah: new Date(),
   keterangan: "",
 });
-
-const dokFile = ref(null);
 
 watch(
   () => dokStore.errorMessage,
@@ -43,12 +41,10 @@ watch(
   () => {
     if (dokStore.isSuccessSubmit) {
       dokStore.$reset();
-
       snackbar.add({
         type: "success",
-        text: "Dokumen Komisi Berhasil Disimpan",
+        text: "Dokumen komisi berhasil disimpan",
       });
-
       router.back();
     }
   }
@@ -75,7 +71,7 @@ function onSubmit(e) {
   if (dokId.value == 0) {
     dokStore.saveDokKomisi(dokForm.value, dokFile.value);
   } else {
-    dokStore.updateDokKomisi(dokId.value, dokForm.value, null);
+    dokStore.updateDokKomisi(dokId.value, dokForm.value, dokFile.value);
   }
 }
 
@@ -106,6 +102,7 @@ onMounted(() => {
                 id="nosurat"
                 class="form-control"
                 v-model="dokForm.noSurat"
+                placeholder="Isi Nomor Dokumen Komisi"
                 required
               />
             </div>
@@ -118,6 +115,7 @@ onMounted(() => {
                 id="keterangan"
                 class="form-control"
                 v-model="dokForm.keterangan"
+                placeholder="Isi Keterangan Dokumen Komisi"
                 required
               />
             </div>
@@ -133,7 +131,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div v-if="dokUrl == ''" class="form-group">
+        <div class="form-group">
           <label for="exampleInputFile">Unggah Dokumen</label>
           <div class="input-group">
             <div class="custom-file">
@@ -141,6 +139,7 @@ onMounted(() => {
                 type="file"
                 class="custom-file-input"
                 id="exampleInputFile"
+                accept=".pdf"
                 @change="onChangeDok"
               />
               <label class="custom-file-label" for="exampleInputFile">
@@ -151,14 +150,6 @@ onMounted(() => {
                 }}
               </label>
             </div>
-          </div>
-        </div>
-        <div v-else class="row text-left">
-          <!-- <div class="col-md-12">
-            <img :src="dokUrl" width="150" height="150" />
-          </div> -->
-          <div class="col-md-12">
-            <h5>Dokumen yang diunggah: {{ dokName }}</h5>
           </div>
         </div>
       </div>

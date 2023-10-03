@@ -20,7 +20,7 @@ export function insertGalleryRequest(data) {
 }
 
 export function updateGalleryRequest(galleryId, data) {
-    return resource.update(galleryId, data, 'update', true)
+    return resource.updateFormData(galleryId, data, 'update', true)
 }
 
 export function deleteGalleryRequest(galleryId) {

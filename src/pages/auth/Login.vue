@@ -26,9 +26,7 @@ function handleLogin() {
   }
 }
 
-authStore.$subscribe((mutatuin, state) => {
-  //   console.log("subscribe", state.isSuccess); // status
-});
+authStore.$subscribe((mutatuin, state) => {});
 
 watch(
   () => authStore.isError,
@@ -76,7 +74,8 @@ onMounted(() => {
         <a href="#">Senat Polindra</a>
       </div>
       <div class="card">
-        <div class="card-body login-card-body">
+        <div class="card-body login-card-body position-relative">
+          <LoadingComponent v-if="authStore.isLoading" />
           <center>
             <!-- <img src="../assets/img/logopolindra.png" width="30" height="30" /> -->
           </center>

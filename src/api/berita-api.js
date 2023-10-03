@@ -20,7 +20,7 @@ export function insertBeritaRequest(data) {
 }
 
 export function updateBeritaRequest(beritaId, data) {
-    return resource.update(beritaId, data, 'update', true)
+    return resource.updateFormData(beritaId, data, 'update', true)
 }
 
 export function deleteBeritaRequest(beritaId) {
