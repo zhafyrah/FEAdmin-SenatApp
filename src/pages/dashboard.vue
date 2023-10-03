@@ -142,6 +142,7 @@ watch(
     <section class="col-lg-12 connectedSortable">
       <div class="card">
         <div class="card-body">
+          <p>Unggahan Dokumen Pleno</p>
           <BarChart v-bind="barChartProps" />
         </div>
         <div class="card-footer clearfix"></div>

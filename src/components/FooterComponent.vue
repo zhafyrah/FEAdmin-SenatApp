@@ -3,7 +3,8 @@
   <footer class="main-footer">
     <center>
       <strong
-        >Copyright &copy; <a href="https://polindra.ac.id/">Polindra</a></strong
+        >Copyright &copy; 2023 -
+        <a href="https://polindra.ac.id/">Polindra</a></strong
       >
     </center>
   </footer>

@@ -91,6 +91,13 @@ onMounted(() => {
         <div class="info">
           <a href="#" class="d-block">{{ fullName }}</a>
         </div>
+        <div class="d-flex align-items-right mt-2">
+          <i
+            class="fas fa-power-off"
+            @click="handleLogout"
+            style="color: white; margin-left: 90px"
+          ></i>
+        </div>
       </div>
 
       <nav class="mt-2">
@@ -237,15 +244,6 @@ onMounted(() => {
           </nav-item>
         </ul>
       </nav>
-      <div class="d-flex align-items-center justify-content-center mt-2">
-        <button
-          type="button"
-          class="btn btn-primary w-100"
-          @click="handleLogout"
-        >
-          Keluar
-        </button>
-      </div>
     </div>
   </aside>
 </template>
